@@ -42,7 +42,7 @@ router.get("/players/:id", readPlayer);
 router.put("/players/:id", updatePlayer);
 router.post('/players', createPlayer);
 router.delete('/players/:id', deletePlayer);
-router.get("/players/scores", readPlayerScores);
+router.get("/players/:id/scores", readPlayerScores);
 
 
 
