@@ -42,6 +42,9 @@ router.get("/players/:id", readPlayer);
 router.put("/players/:id", updatePlayer);
 router.post('/players', createPlayer);
 router.delete('/players/:id', deletePlayer);
+router.get("/players/scores", readPlayerScores);
+
+
 
 app.use(router);
 app.use(errorHandler);
@@ -116,4 +119,14 @@ function deletePlayer(req, res, next) {
         .catch(err => {
             next(err);
         });
+}
+
+function readPlayerScores(req, res, next) {
+  db.many('SELECT score FROM Player, PlayerGame WHERE Player.ID = PlayerGame.playerID AND Player.name = ${name})', req.params)
+      .then(data => {
+          returnDataOr404(res, data);
+      })
+      .catch(err => {
+          next(err);
+      });
 }
