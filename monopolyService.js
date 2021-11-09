@@ -38,11 +38,10 @@ router.use(express.json());
 
 router.get("/", readHelloMessage);
 router.get("/players", readPlayers);
-router.get("/players/:id", readPlayer);
 router.put("/players/:id", updatePlayer);
 router.post('/players', createPlayer);
 router.delete('/players/:id', deletePlayer);
-router.get("/players/:name", readPlayerScores);
+router.get("/players/:id", readPlayerScores);
 
 
 
