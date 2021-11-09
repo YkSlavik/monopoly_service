@@ -38,10 +38,11 @@ router.use(express.json());
 
 router.get("/", readHelloMessage);
 router.get("/players", readPlayers);
+router.get("/players/:id", readPlayer);
 router.put("/players/:id", updatePlayer);
 router.post('/players', createPlayer);
 router.delete('/players/:id', deletePlayer);
-router.get("/players/:id", readPlayerScores);
+router.get("/players/:name", readPlayerScores);
 
 
 
@@ -121,7 +122,7 @@ function deletePlayer(req, res, next) {
 }
 
 function readPlayerScores(req, res, next) {
-  db.many('SELECT score FROM Player, PlayerGame WHERE Player.ID = PlayerGame.playerID AND Player.ID = ${ID}', req.params)
+  db.many('SELECT score FROM Player, PlayerGame WHERE Player.ID = PlayerGame.playerID AND Player.name = ${name}', req.params)
       .then(data => {
           returnDataOr404(res, data);
       })
