@@ -42,7 +42,7 @@ router.get("/players/:id", readPlayer);
 router.put("/players/:id", updatePlayer);
 router.post('/players', createPlayer);
 router.delete('/players/:id', deletePlayer);
-router.get("/players/:id/scores", readPlayerScores);
+router.get("/players/:id/scores", readPlayerHighestScore);
 
 
 
@@ -121,8 +121,8 @@ function deletePlayer(req, res, next) {
         });
 }
 
-function readPlayerScores(req, res, next) {
-  db.many('SELECT score FROM Player, PlayerGame WHERE Player.ID=PlayerGame.playerID AND Player.ID=${id}', req.params)
+function readPlayerHighestScore(req, res, next) {
+  db.many('SELECT score FROM Player, PlayerGame WHERE Player.ID=PlayerGame.playerID AND Player.ID=${id} ORDER BY score DESC LIMIT 1;', req.params)
       .then(data => {
           returnDataOr404(res, data);
       })

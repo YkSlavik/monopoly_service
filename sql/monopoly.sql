@@ -56,7 +56,6 @@ INSERT INTO Game VALUES (3, '2006-06-29 18:41:00');
 INSERT INTO Player VALUES (1, 'me@calvin.edu', 'new name');
 INSERT INTO Player VALUES (2, 'king@gmail.edu', 'The King');
 INSERT INTO Player VALUES (3, 'dog@gmail.edu', 'DogBark');
-INSERT INTO Player VALUES (4, 'cat@gmail.edu', 'Catfish');
 
 INSERT INTO PlayerGame VALUES (1, 1, 0.00);
 INSERT INTO PlayerGame VALUES (1, 2, 0.00);
