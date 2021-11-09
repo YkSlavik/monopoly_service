@@ -42,7 +42,7 @@ router.get("/players/:id", readPlayer);
 router.put("/players/:id", updatePlayer);
 router.post('/players', createPlayer);
 router.delete('/players/:id', deletePlayer);
-router.get("/players/:name/scores", readPlayerScores);
+router.get("/players/:name", readPlayerScores);
 
 
 
@@ -122,7 +122,7 @@ function deletePlayer(req, res, next) {
 }
 
 function readPlayerScores(req, res, next) {
-  db.many('SELECT score FROM Player, PlayerGame WHERE Player.ID = PlayerGame.playerID AND Player.name = ${name}', req.params)
+  db.many('SELECT score FROM Player, PlayerGame WHERE Player.ID = PlayerGame.playerID AND Player.ID = ${ID}', req.params)
       .then(data => {
           returnDataOr404(res, data);
       })
